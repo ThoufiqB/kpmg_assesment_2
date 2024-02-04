@@ -1,4 +1,5 @@
-KPMG Assessment Challenges
+**KPMG Assessment Challenges**
+
 Overview
 This repository contains solutions for two challenges, Challenge_2 and Challenge_3, provided by KPMG as part of the assessment.
 
@@ -9,5 +10,5 @@ Challenge_2:
 Challenge_3: 
     Web Log Analysis
 
-Usage
+**Usage**
 Refer to the individual README.md files within each challenge folder for specific instructions on running and using the provided solutions.
