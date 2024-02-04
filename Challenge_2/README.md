@@ -1,48 +1,20 @@
-Programmatically list out the top 20 articles from the Hacker News homepage (https://news.ycombinator.com).
-----------------------------------------------------------------------------------------------------------------------------------
-Using the Hacker news API Documentation: https://github.com/HackerNews/API
+Hacker News Top 20 Articles List
 
-# Code explaination:
+Overview
+This repository contains three Python scripts designed to programmatically list out the top 20 articles from the Hacker News homepage (https://news.ycombinator.com). The scripts provide information such as Story ID, time, and comments for each article. The details on how to use the code can be found in usage.txt.
 
-import requests: 
-    Imports the requests library, enabling HTTP requests to be made in the script.
+Files
+1. list_by_story_id.py: This script lists the top 20 articles from Hacker News by Story ID.
+2. list_by_time.py: This script lists the top 20 articles from Hacker News by time.
+3. list_by_comments.py: This script lists the top 20 articles from Hacker News by the number of comments.
 
-# #Please note: Multiple functions has been created to list based on Story ID, Time, Comments. ##
-## List by Story ID##
-def fetch_top_stories(limit=20)::
-     Defines a function fetch_top_stories with an optional parameter limit set to 20 by default. This function will fetch the top stories from Hacker News.
+Usage
+Refer to the usage.txt file for detailed instructions on how to use each script. Generally, you can run the scripts using the following command:
 
-## List by time##
-def fetch_top_stories_by_time(limit=30):
+python script_name.py
 
+Dependencies
+Ensure you have Python installed on your system. The scripts rely on standard Python libraries and do not require any additional dependencies.
 
-## List by comments##
-def fetch_top_stories_by_comments(limit=30):
- 
-
-response = requests.get('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty'): 
-    Makes an HTTP GET request to the Hacker News API endpoint that lists the top story IDs. The response is stored in the variable response.
-
-story_ids = response.json():
-     Parses the JSON content from the response, converting it into a Python list of story IDs, and stores this list in story_ids.
-
-top_stories = []: 
-    Initializes an empty list top_stories, which will later contain the titles of the top stories.
-
-for story_id in story_ids[:limit]:: 
-    Begins a loop over the first limit number of story IDs in story_ids.
-
-story_response = requests.get(f'https://hacker-news.firebaseio.com/v0/item/{story_id}.json?print=pretty'): 
-    For each story_id, makes an HTTP GET request to fetch the story's details from the API.
-
-story = story_response.json(): 
-    Parses the JSON content of the story's details response, converting it into a Python dictionary.
-
-top_stories.append(story.get('title')): 
-    Extracts the title from the story dictionary using .get('title') (which safely returns None if title is not a key in the dictionary) and appends it to the top_stories list.
-
-for index, story in enumerate(fetch_top_stories(), start=1):: 
-    After defining and calling fetch_top_stories(), this line iterates over each title in the returned list of top stories. enumerate is used to get both the index (starting from 1) and the story title for printing.
-
-print(f"{index}: {story}"): 
-    Prints each story's index and title, formatting them in a readable format.
+Note
+Make sure to use these scripts responsibly and adhere to Hacker News' terms of service. Additionally, be aware that web scraping may be subject to legal and ethical considerations.
